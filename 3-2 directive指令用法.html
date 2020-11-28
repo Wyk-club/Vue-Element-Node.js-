@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>directive 用法</title>
+</head>
+<body>
+    <div id="root">
+        <div v-loading="isLoading"></div>
+        <button @click="update">更新</button>
+    </div>
+    <script>
+        //除了update()，Vue.directive支持更多方法，详见官网
+        //官网：https://cn.vuejs.org/v2/api/#Vue-directive
+        debugger
+        Vue.directive('loading',{
+            update(el, binding, vnode){
+                //el：指令绑定的dom元素
+                //binging：指令的具体信息，包括指令的名称，指令绑定的值
+                //vnode：指令绑定的dom转化而成的对象
+                console.log(el, binding, vnode)
+                if(binding.value){
+                    const div = document.createElement('div')
+                    div.innerText = '加载中...'
+                    div.setAttribute('id','loading')
+                    div.style.position = 'fixed'
+                    div.style.left = 0
+                    div.style.right = 0
+                    div.style.top = 0
+                    div.style.bottom = 0
+                    div.style.width = '100%'
+                    div.style.height = '100%'
+                    div.style.display = 'flex'
+                    div.style.justifyContent = 'center'
+                    div.style.alignItems = 'center'
+                    div.style.color = 'white'
+                    div.style.background = 'rgba(0, 0, 0, .7)'
+                    document.body.append(div)
+                }else{
+                    document.body.removeChild(document.getElementById('loading'))
+                }
+            }
+        })
+        new Vue({
+            el: '#root',
+            data() {
+                return {
+                    isLoading: false,
+                    data: ''
+                }
+            },
+            methods:{
+                update(){
+                    this.isLoading = true
+                    setTimeout(() => {
+                        this.data = '用户数据'
+                        this.isLoading = false
+                    }, 3000)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

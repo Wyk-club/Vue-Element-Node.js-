@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue.extent 用法</title>
+</head>
+<body>
+    <div id="root">
+        <Test :msg="message"></Test>
+    </div>
+    <script>
+        //Vue.extent主要用途是 生成组件的构造函数(生成组件构造器)
+        Vue.extend({
+            template: '<div>{{msg}}</div>',
+            props: {
+                msg: {
+                    type: String,
+                    default: 'default message'
+                }
+            }
+        })
+        Vue.component('Test', component)
+        new Vue({
+            el: '#root',
+            data() {
+                return {
+                    message: 'Test Extend Component'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
