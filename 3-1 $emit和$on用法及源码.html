@@ -23,7 +23,7 @@
                 this.$on('my_events',this.handleEvents2);
                 this.$on(['my_events1','my_events2'],this.handleEvents3);
                 //$on第一个参数支持传入一个数组，如果是数组，会对数组中的每一个事件进行监听调用指定的函数
-                //对于一个事件，可以指定多个方法，这些方法会依次执行
+                //对于一个事件，可以指定多个方法，这些方法会放到一个数组中。事件触发的时候，这些方法会依次执行
             },
             methods:{
                 handleEvents1(e){
