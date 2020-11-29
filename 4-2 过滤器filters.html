@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>过滤器 filter</title>
+</head>
+<body>
+    <div id="root">
+        {{message | lower}}
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data() {
+                return {
+                    message: "Hello Vue"
+                }
+            },
+            filters: {
+                lower(value) {
+                    console.log(this)//Window
+                    //filters中是获取不到vue实例的
+                    //因为在生成(vue实例的)render函数的时候，已经把filters包含进去了
+                    return value.toLowerCase()
+                }
+            }
+        })
+    </script>
+</body>
+</html>

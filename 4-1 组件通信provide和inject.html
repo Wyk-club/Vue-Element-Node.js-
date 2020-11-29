@@ -14,6 +14,7 @@
         function registerPlugin() {
             Vue.component('Test', {
                 template: '<div>{{message}}<Test2 /></div>',
+                //provide 和 inject 是跨组件通信的一种解决方案
                 provide() {
                     return {
                         elTest: this

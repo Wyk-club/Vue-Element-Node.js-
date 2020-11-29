@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue.observable</title>
+</head>
+<body>
+    <div id="root">
+        {{message}}
+        <button @click="change">Change</button>
+    </div>
+    <script>
+        //Vue.observable将对象添加到响应式对象中
+        const state = Vue.observable({message: 'Vue 2.6'})
+        const mutation = {
+            setMessage(value) {
+                state.message = value
+            }
+        }
+        new Vue({
+            el: '#root',
+            computed: {
+                message() {
+                    return state.message
+                }
+            },
+            methods: {
+                change() {
+                    mutation.setMessage('Vue 3.0')
+                }
+            }
+        })
+    </script>
+</body>
+</html>
