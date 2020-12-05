@@ -1,6 +1,6 @@
 <template>
+  <!-- 表单校验的基本用法 -->
   <div id="app">
-    <h3>表单的基本用法</h3>
     <el-form inline :model="data">
       <el-form-item label="审批人">
         <el-input v-model="data.user" placeholder="审批人"></el-input>
@@ -15,24 +15,31 @@
         <el-button type="primary" @click="onSubmit">查询</el-button>
       </el-form-item>
     </el-form>
-    <el-divider></el-divider>
-    <h3>表单校验的基本用法</h3>
-    <form-valid-base></form-valid-base>
   </div>
 </template>
 
 <script>
-import formValidBase from './form-valid-base.vue'
+
 export default {
   name: 'app',
-  components: {
-    formValidBase
-  },
   data() {
+    const userValidator = (rule, value, callback) => {
+        if (value.length > 3) {
+            callback()
+        } else {
+            callback(new Error('用户名长度必须大于3'))
+        }
+    }
     return {
       data: {
-        user:'sam',
-        region: 'shanghai'
+        user:'',
+        region: ''
+      },
+      rules: {
+          user: [
+              { required: true, trigger: 'change', message: '用户名必须录入' },
+              { validator: userValidator, trigger:'change' }
+          ]
       }
     }
   },
