@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单校验的高级用法</title>
+</head>
+<body>
+    <script>
+        //用法1：动态改变校验规则
+        //例子：element-ui-test2 > form-valid-senior1.vue
+
+        //用法2：手动控制校验状态
+        //例子：element-ui-test2 > form-valid-senior2.vue
+        //* validate-success：验证状态，枚举值，共四种：
+        //  success：验证成功
+        //  error：验证失败
+        //  validating：验证中
+        //  (空)：未验证
+        //* error：自定义错误提示
+        //1.设置el-form-item属性
+        /* <el-form-item 
+        label="审批人"
+        prop="user"
+        :error="error"
+        :validate-status="status"
+        > */
+        //2.自定义error和status
+
+        //总结一下：在el-form-item中添加2个属性：:validate-success="status"、:error="error"，在el-form中添加1个属性status-icon
+        //         在data中定义error和status 
+    </script>
+</body>
+</html>

@@ -18,15 +18,25 @@
     <el-divider></el-divider>
     <h3>表单校验的基本用法</h3>
     <form-valid-base></form-valid-base>
+    <el-divider></el-divider>
+    <h3>表单校验的高级用法1 - 动态改变校验规则</h3>
+    <form-valid-senior1></form-valid-senior1>
+    <el-divider></el-divider>
+    <h3>表单校验的高级用法2 - 手动控制校验状态</h3>
+    <form-valid-senior2></form-valid-senior2>
   </div>
 </template>
 
 <script>
 import formValidBase from './form-valid-base.vue'
+import formValidSenior1 from './form-valid-senior1.vue'
+import formValidSenior2 from './form-valid-senior2.vue'
 export default {
   name: 'app',
   components: {
-    formValidBase
+    formValidBase,
+    formValidSenior1,
+    formValidSenior2
   },
   data() {
     return {
